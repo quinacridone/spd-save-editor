@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "fflate": "^0.7.3"
+    "fflate": "^0.7.3",
+    "svelte-jsoneditor": "^0.6.2"
   }
 }

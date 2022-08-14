@@ -1,29 +1,38 @@
 <script lang="ts">
 	import Hero from "./lib/Hero.svelte";
-	import Backpack from "./lib/Backpack.svelte";
+	import Backpack from "./lib/bags/Backpack.svelte";
 	import SaveFile from "./lib/SaveFile.svelte";
-import VelvetPouch from "./lib/VelvetPouch.svelte";
-import ScrollHolder from "./lib/ScrollHolder.svelte";
-import PotionBandolier from "./lib/PotionBandolier.svelte";
-import MagicHolster from "./lib/MagicHolster.svelte";
+	import VelvetPouch from "./lib/bags/VelvetPouch.svelte";
+	import ScrollHolder from "./lib/bags/ScrollHolder.svelte";
+	import PotionBandolier from "./lib/bags/PotionBandolier.svelte";
+	import MagicHolster from "./lib/bags/MagicHolster.svelte";
+	import Game from "./lib/Game.svelte";
+	import Row from "./lib/Row.svelte";
+	import Statistics from "./lib/Statistics.svelte";
+	import Editor from "./lib/Editor.svelte";
 </script>
 
-<header>
-  <SaveFile />
-</header>
+<SaveFile />
 <main>
-  <Hero />
-  <Backpack />
-  <VelvetPouch />
-  <ScrollHolder />
-  <PotionBandolier />
-  <MagicHolster />
+	<!-- <Editor /> -->
+	<Row>
+		<Game />
+		<Hero />
+		<Statistics />
+	</Row>
+	<Row>
+		<Backpack />
+	</Row>
+	<Row>
+		<VelvetPouch />
+	</Row>
+	<Row>
+		<ScrollHolder />
+	</Row>
+	<Row>
+		<PotionBandolier />
+	</Row>
+	<Row>
+		<MagicHolster />
+	</Row>
 </main>
-
-<style>
-  main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-</style>

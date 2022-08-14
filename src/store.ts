@@ -1,3 +1,5 @@
 import { writable } from "svelte/store";
 
-export const gameData = writable(undefined);
+import type { GameData } from "./types";
+
+export const gameData = writable<GameData>(undefined);
