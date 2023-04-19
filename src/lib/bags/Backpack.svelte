@@ -1,7 +1,14 @@
 <script lang="ts">
-	import { gameData } from "../../store";
+	import { gameData, itemList } from "../../store";
 	import type { Item } from "../../types";
+	import Button from "../components/Button.svelte";
+	import Dropdown from "../components/Dropdown.svelte";
+	import Input from "../components/Input.svelte";
+	import InputNumber from "../components/InputNumber.svelte";
+	import Label from "../components/Label.svelte";
+	import Section from "../components/Section.svelte";
 
+	let selectedNewItem = "";
 	let items = [];
 
 	$: if ($gameData !== undefined) {
@@ -22,7 +29,7 @@
 
 	const addItem = () => {
 		const newItem: Item = {
-			__className: "com.shatteredpixel.shatteredpixeldungeon.items.",
+			__className: selectedNewItem,
 			cursed: false,
 			cursedKnown: false,
 			kept_lost: false,
@@ -48,32 +55,40 @@
 	};
 </script>
 
-<div class="container">
-	<div class="title">
-		<span>Backpack</span>
-	</div>
-	{#if $gameData}
-		<table>
-			<thead>
+{#if $gameData}
+	<Section title="Backpack">
+		<div>
+			<Dropdown bind:value={selectedNewItem}>
+				{#each $itemList as item}
+					<option value={item}>{item}</option>
+				{/each}
+			</Dropdown>
+			<Button on:click={() => addItem()}>+ Add item</Button>
+		</div>
+		<table class="w-full table-auto border-collapse border">
+			<thead class="bg-firebrick">
 				<tr>
-					<th scope="col">Item Name</th>
-					<th scope="col">Quantity</th>
-					<th scope="col">Level</th>
+					<th class="border">Item Name</th>
+					<th class="border">Quantity</th>
+					<th class="border">Level</th>
+					<th class="border" />
 				</tr>
 			</thead>
 			<tbody>
 				{#each items as item, i}
 					<tr>
-						<td><input type="text" class="text-input" value={showOnlyItemName(item["__className"])} /></td>
-						<td><input type="number" value={item.quantity} /></td>
-						<td><input type="number" value={item.level} /></td>
-						<td><button id="remove-button" on:click={() => removeItem(i)}>x</button></td>
+						<td><Input value={showOnlyItemName(item["__className"])} /></td>
+						<td><InputNumber value={item.quantity} /></td>
+						<td><InputNumber value={item.level} /></td>
+						<td>
+							<div class="flex justify-center">
+								<Button on:click={() => removeItem(i)}>X</Button>
+							</div>
+						</td>
 					</tr>
 				{/each}
-				<tr>
-					<button id="add-button" on:click={() => addItem()}>+ Add item</button>
-				</tr>
+				<tr />
 			</tbody>
 		</table>
-	{/if}
-</div>
+	</Section>
+{/if}

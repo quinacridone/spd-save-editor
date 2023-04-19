@@ -1,45 +1,45 @@
 <script lang="ts">
+	import Section from "./components/Section.svelte";
 	import { gameData } from "../store";
+	import Label from "./components/Label.svelte";
+	import InputNumber from "./components/InputNumber.svelte";
 </script>
 
 {#if $gameData}
-	<div class="container">
-		<div class="title">
-			<span>Statistics</span>
+	<Section title="Statistics">
+		<div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
+			<Label>Ankhs used:</Label>
+			<InputNumber bind:value={$gameData.ankhsUsed} />
+
+			<Label>Food eaten:</Label>
+			<InputNumber bind:value={$gameData.foodEaten} />
+
+			<Label>Piranhas:</Label>
+			<InputNumber bind:value={$gameData.priranhas} />
+
+			<Label>Upgrades used:</Label>
+			<InputNumber bind:value={$gameData.upgradesUsed} />
+
+			<Label>Potions cooked:</Label>
+			<InputNumber bind:value={$gameData.potionsCooked} />
+
+			<Label>Enemies slain:</Label>
+			<InputNumber bind:value={$gameData.enemiesSlain} />
+
+			<Label>Maximum depth:</Label>
+			<InputNumber bind:value={$gameData.maxDepth} />
+
+			<Label>Sneak attacks:</Label>
+			<InputNumber bind:value={$gameData.sneakAttacks} />
+
+			<Label>Thrown assists:</Label>
+			<InputNumber bind:value={$gameData.thrownAssists} />
+
+			<Label>Qualified for no-killing:</Label>
+			<input type="checkbox" bind:value={$gameData.qualifiedForNoKilling} />
+
+			<Label>Score:</Label>
+			<InputNumber bind:value={$gameData.score} />
 		</div>
-		<div class="grid">
-			<span class="label">Ankhs used:</span>
-			<span class="value"><input type="number" bind:value={$gameData.ankhsUsed} /></span>
-
-			<span class="label">Food eaten:</span>
-			<span class="value"><input type="number" bind:value={$gameData.foodEaten} /></span>
-
-			<span class="label">Piranhas:</span>
-			<span class="value"><input type="number" bind:value={$gameData.priranhas} /></span>
-
-			<span class="label">Upgrades used:</span>
-			<span class="value"><input type="number" bind:value={$gameData.upgradesUsed} /></span>
-
-			<span class="label">Potions cooked:</span>
-			<span class="value"><input type="number" bind:value={$gameData.potionsCooked} /></span>
-
-			<span class="label">Enemies slain:</span>
-			<span class="value"><input type="number" bind:value={$gameData.enemiesSlain} /></span>
-
-			<span class="label">Maximum depth:</span>
-			<span class="value"><input type="number" bind:value={$gameData.maxDepth} /></span>
-
-			<span class="label">Sneak attacks:</span>
-			<span class="value"><input type="number" bind:value={$gameData.sneakAttacks} /></span>
-
-			<span class="label">Thrown assists:</span>
-			<span class="value"><input type="number" bind:value={$gameData.thrownAssists} /></span>
-
-			<span class="label">Qualified for no-killing:</span>
-			<span class="value"><input type="checkbox" bind:value={$gameData.qualifiedForNoKilling} /></span>
-
-			<span class="label">Score:</span>
-			<span class="value"><input type="number" bind:value={$gameData.score} /></span>
-		</div>
-	</div>
+	</Section>
 {/if}

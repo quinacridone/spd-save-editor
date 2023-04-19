@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from "./../components/Input.svelte";
+	import Input from "../components/Input.svelte";
 	import { gameData } from "../../store";
 	import type { Item } from "../../types";
 	import Button from "../components/Button.svelte";
@@ -12,7 +12,7 @@
 	const getItems = (inventory: any) => {
 		for (let item of inventory) {
 			const className = item["__className"];
-			if (className === "com.shatteredpixel.shatteredpixeldungeon.items.bags.PotionBandolier") {
+			if (className === "com.shatteredpixel.shatteredpixeldungeon.items.bags.MagicalHolster") {
 				shouldGoInsideThisBag = true;
 				getItems(item.inventory);
 			} else if (shouldGoInsideThisBag && !item.inventory) {
@@ -48,7 +48,7 @@
 </script>
 
 {#if $gameData}
-	<Section title="Potion Bandolier">
+	<Section title="Magic Holster">
 		<Button on:click={() => addItem()}>+ Add item</Button>
 		<div class="grid grid-cols-3 gap-1">
 			<span>Item</span>

@@ -1,6 +1,13 @@
 <script lang="ts">
-	import { gameData } from "../../store";
+	import Input from "./../components/Input.svelte";
+	import { gameData, itemList } from "../../store";
 	import type { Item } from "../../types";
+	import Button from "../components/Button.svelte";
+	import Section from "../components/Section.svelte";
+	import InputNumber from "../components/InputNumber.svelte";
+	import Dropdown from "../components/Dropdown.svelte";
+
+	let selectedNewItem = "";
 	let items = [];
 	let shouldGoInsideThisBag = false;
 
@@ -29,40 +36,39 @@
 	};
 
 	const addItem = () => {
-		const item: Item = {
+		const newItem: Item = {
 			cursed: false,
 			cursedKnown: false,
+			kept_lost: true,
+			level: 0,
+			levelKnown: true,
+			quantity: 1,
+			__className: "com.shatteredpixel.shatteredpixeldungeon.items.",
 		};
-		items.push(item);
+		items = [...items, newItem];
 	};
 </script>
 
 {#if $gameData}
-	<div class="container">
-		<div class="title">
-			<button id="add-button" on:click={() => addItem()}>+ Add item</button>
-			<span>Velvet Pouch</span>
+	<Section title="Velvet Pouch">
+		<div>
+			<Dropdown bind:value={selectedNewItem}>
+				{#each $itemList as item}
+					<option value={item}>{item}</option>
+				{/each}
+			</Dropdown>
+			<Button on:click={() => addItem()}>+ Add item</Button>
 		</div>
-		<div class="grid-3">
+		<div class="grid grid-cols-3 gap-1">
 			<span>Item</span>
 			<span>Quantity</span>
 			<span>Level</span>
 			{#each items as item}
 				<!-- <input type="text" bind:value={item["__className"]} /> -->
-				<span class="value"><input type="text" class="text" value={showOnlyItemName(item["__className"])} /></span>
-				<span class="value"><input type="number" value={item.quantity} /></span>
-				<span class="value"><input type="number" value={item.level} /></span>
+				<Input value={showOnlyItemName(item["__className"])} />
+				<InputNumber value={item.quantity} />
+				<InputNumber value={item.level} />
 			{/each}
 		</div>
-	</div>
+	</Section>
 {/if}
-
-<style>
-	#add-button {
-		position: absolute;
-		top: 0.8rem;
-		right: 0.8rem;
-		padding: 4px;
-		box-sizing: border-box;
-	}
-</style>

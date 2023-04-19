@@ -5,34 +5,34 @@
 	import VelvetPouch from "./lib/bags/VelvetPouch.svelte";
 	import ScrollHolder from "./lib/bags/ScrollHolder.svelte";
 	import PotionBandolier from "./lib/bags/PotionBandolier.svelte";
-	import MagicHolster from "./lib/bags/MagicHolster.svelte";
+	import MagicHolster from "./lib/bags/MagicalHolster.svelte";
 	import Game from "./lib/Game.svelte";
-	import Row from "./lib/Row.svelte";
+	import Row from "./lib/components/Row.svelte";
 	import Statistics from "./lib/Statistics.svelte";
 	import Editor from "./lib/Editor.svelte";
+	import Header from "./lib/components/Header.svelte";
+	import Content from "./lib/components/Content.svelte";
+	import SelectFile from "./lib/UploadGameData.svelte";
+	import DownloadFile from "./lib/DownloadFile.svelte";
+	import Section from "./lib/components/Section.svelte";
 </script>
 
-<SaveFile />
-<main>
-	<!-- <Editor /> -->
-	<Row>
+<div class="flex h-screen flex-col overflow-hidden">
+	<Header>
+		<SelectFile />
+		<DownloadFile />
+		<!-- <SaveFile /> -->
+	</Header>
+
+	<Content>
 		<Game />
 		<Hero />
 		<Statistics />
-	</Row>
-	<Row>
+		<!-- <Editor /> -->
 		<Backpack />
-	</Row>
-	<Row>
 		<VelvetPouch />
-	</Row>
-	<Row>
 		<ScrollHolder />
-	</Row>
-	<Row>
 		<PotionBandolier />
-	</Row>
-	<Row>
 		<MagicHolster />
-	</Row>
-</main>
+	</Content>
+</div>

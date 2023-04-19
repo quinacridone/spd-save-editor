@@ -57,23 +57,16 @@
 	};
 </script>
 
-<header>
-	<button id="load-file" on:click={() => input.click()}>Upload save file</button>
-	<input
-		type="file"
-		id="save-file"
-		name="save-file"
-		accept=".dat"
-		on:change={(e) => onFileSelected(e)}
-		bind:files
-		bind:this={input}
-		on:click={() => (input.value = "")}
-	/>
-	<button id="download" on:click={() => download()}>Download</button>
-</header>
-
-<style>
-	#download {
-		margin-left: 5px;
-	}
-</style>
+<button id="load-file" on:click={() => input.click()}>Upload save file</button>
+<input
+	class="hidden"
+	type="file"
+	id="save-file"
+	name="save-file"
+	accept=".dat"
+	on:change={(e) => onFileSelected(e)}
+	bind:files
+	bind:this={input}
+	on:click={() => (input.value = "")}
+/>
+<button id="download" on:click={() => download()}>Download</button>

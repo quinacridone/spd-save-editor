@@ -1,10 +1,29 @@
 <script lang="ts">
+	import Label from "./components/Label.svelte";
 	import { gameData } from "../store";
+	import Container from "./components/Container.svelte";
+	import Section from "./components/Section.svelte";
+	import Input from "./components/Input.svelte";
+	import InputNumber from "./components/InputNumber.svelte";
 </script>
 
-<div class="container">
+{#if $gameData}
+	<Section title="Game">
+		<div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
+			<Label>Custom seed:</Label>
+			<Input bind:value={$gameData.custom_seed} readonly />
+			<Label>Seed:</Label>
+			<InputNumber bind:value={$gameData.seed} readonly />
+			<Label>Version:</Label>
+			<InputNumber bind:value={$gameData.version} readonly />
+			<Label>Depth:</Label>
+			<InputNumber bind:value={$gameData.depth} readonly />
+			<Label>Amulet obtained:</Label>
+			<InputNumber bind:value={$gameData.amuletObtained} readonly />
+		</div>
+	</Section>
+	<!-- <Container>
 	<div class="title">Game</div>
-	{#if $gameData}
 		<table>
 			<tbody>
 				<tr>
@@ -29,5 +48,5 @@
 				</tr>
 			</tbody>
 		</table>
-	{/if}
-</div>
+</Container> -->
+{/if}
