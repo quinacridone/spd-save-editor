@@ -2,7 +2,7 @@
 	import { Buffer } from "buffer";
 	import { gunzipSync, gzipSync, strFromU8 } from "fflate";
 	import { gameData } from "../store";
-  import Button from './components/Button.svelte';
+	import Button from "./components/Button.svelte";
 	let saveFile;
 	const download = () => {
 		if (!saveFile) {
@@ -27,6 +27,8 @@
 	};
 </script>
 
-<div>
-  <Button on:click={() => download()}>Download</Button>
-</div>
+{#if saveFile}
+	<div>
+		<Button on:click={() => download()}>Download</Button>
+	</div>
+{/if}
