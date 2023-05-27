@@ -27,4 +27,6 @@ npm run dev
 
 ## Development
 
+Svelte + Vite + TS
+
 This is still a work in progress. Use at your own risk!

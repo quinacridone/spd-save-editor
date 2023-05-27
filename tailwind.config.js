@@ -11,7 +11,7 @@ export default {
       'black': '#000000ff',
     },
     fontFamily: {
-      sans: ['IBM_VGA', 'sans-serif']
+      sans: ['Web437_IBM_VGA_8x16', 'sans-serif']
     },
     extend: {},
   },
