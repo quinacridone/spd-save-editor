@@ -3,7 +3,7 @@
 	import { gameData } from "../../store";
 	import type { Item } from "../../types";
 	import Button from "../components/Button.svelte";
-	import Section from "../components/Section.svelte";
+	import Section from "../components/Collapse.svelte";
 	import InputNumber from "../components/InputNumber.svelte";
 
 	let items = [];

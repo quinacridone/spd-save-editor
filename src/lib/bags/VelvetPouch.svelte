@@ -3,7 +3,7 @@
 	import { gameData, itemList } from "../../store";
 	import type { Item } from "../../types";
 	import Button from "../components/Button.svelte";
-	import Section from "../components/Section.svelte";
+	import Section from "../components/Collapse.svelte";
 	import InputNumber from "../components/InputNumber.svelte";
 	import Dropdown from "../components/Dropdown.svelte";
 
@@ -51,13 +51,13 @@
 
 {#if $gameData}
 	<Section title="Velvet Pouch">
-		<div>
+		<div class="mb-2 flex space-x-2">
 			<Dropdown bind:value={selectedNewItem}>
 				{#each $itemList as item}
-					<option value={item}>{item}</option>
+					<option value={item}>{showOnlyItemName(item)}</option>
 				{/each}
 			</Dropdown>
-			<Button on:click={() => addItem()}>+ Add item</Button>
+			<Button on:click={() => addItem()}>ADD</Button>
 		</div>
 		<div class="grid grid-cols-3 gap-1">
 			<span>Item</span>

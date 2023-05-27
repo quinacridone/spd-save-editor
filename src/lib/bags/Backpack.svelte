@@ -6,7 +6,7 @@
 	import Input from "../components/Input.svelte";
 	import InputNumber from "../components/InputNumber.svelte";
 	import Label from "../components/Label.svelte";
-	import Section from "../components/Section.svelte";
+	import Section from "../components/Collapse.svelte";
 
 	let selectedNewItem = "";
 	let items = [];
@@ -57,21 +57,21 @@
 
 {#if $gameData}
 	<Section title="Backpack">
-		<div>
+		<div class="mb-2 flex space-x-2">
 			<Dropdown bind:value={selectedNewItem}>
 				{#each $itemList as item}
-					<option value={item}>{item}</option>
+					<option value={item}>{showOnlyItemName(item)}</option>
 				{/each}
 			</Dropdown>
-			<Button on:click={() => addItem()}>+ Add item</Button>
+			<Button on:click={() => addItem()}>ADD</Button>
 		</div>
 		<table class="w-full table-auto border-collapse border">
 			<thead class="bg-firebrick">
 				<tr>
-					<th class="border">Item Name</th>
-					<th class="border">Quantity</th>
-					<th class="border">Level</th>
-					<th class="border" />
+					<th class="border font-normal">Item Name</th>
+					<th class="max-w-32 border font-normal">Quantity</th>
+					<th class="max-w-32 border font-normal">Level</th>
+					<th class="w-2 border" />
 				</tr>
 			</thead>
 			<tbody>
@@ -81,8 +81,8 @@
 						<td><InputNumber value={item.quantity} /></td>
 						<td><InputNumber value={item.level} /></td>
 						<td>
-							<div class="flex justify-center">
-								<Button on:click={() => removeItem(i)}>X</Button>
+							<div class="flex items-center justify-center">
+								<Button className="h-6" on:click={() => removeItem(i)}>X</Button>
 							</div>
 						</td>
 					</tr>

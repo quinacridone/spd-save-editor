@@ -9,8 +9,8 @@
 
 <section class="border border-black">
 	<button
-		class={`w-full  cursor-pointer bg-firebrick px-1 text-left outline-none after:float-right after:mr-1 hover:text-xanthic ${
-			expanded ? "border-b after:content-['-'] hover:border-black" : "after:content-['+'] "
+		class={`w-full cursor-pointer bg-firebrick px-1 text-left outline-none before:float-left before:mr-2 hover:text-xanthic ${
+			expanded ? "border-b before:content-['-'] hover:border-black" : "before:content-['+'] "
 		}`}
 		on:click={onClick}>{title}</button
 	>

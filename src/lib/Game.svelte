@@ -2,7 +2,7 @@
 	import Label from "./components/Label.svelte";
 	import { gameData } from "../store";
 	import Container from "./components/Container.svelte";
-	import Section from "./components/Section.svelte";
+	import Section from "./components/Collapse.svelte";
 	import Input from "./components/Input.svelte";
 	import InputNumber from "./components/InputNumber.svelte";
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Section from "./components/Section.svelte";
+	import Section from "./components/Collapse.svelte";
 	import { gameData } from "../store";
 	import Label from "./components/Label.svelte";
 	import InputNumber from "./components/InputNumber.svelte";
@@ -36,7 +36,9 @@
 			<InputNumber bind:value={$gameData.thrownAssists} />
 
 			<Label>Qualified for no-killing:</Label>
-			<input type="checkbox" bind:value={$gameData.qualifiedForNoKilling} />
+			<div>
+				<input type="checkbox" bind:value={$gameData.qualifiedForNoKilling} />
+			</div>
 
 			<Label>Score:</Label>
 			<InputNumber bind:value={$gameData.score} />

@@ -4,7 +4,7 @@
 	import Dropdown from "./components/Dropdown.svelte";
 	import InputNumber from "./components/InputNumber.svelte";
 	import Label from "./components/Label.svelte";
-	import Section from "./components/Section.svelte";
+	import Section from "./components/Collapse.svelte";
 </script>
 
 {#if $gameData}

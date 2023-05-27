@@ -14,7 +14,7 @@
 	import Content from "./lib/components/Content.svelte";
 	import SelectFile from "./lib/UploadGameData.svelte";
 	import DownloadFile from "./lib/DownloadFile.svelte";
-	import Section from "./lib/components/Section.svelte";
+	import Section from "./lib/components/Collapse.svelte";
 </script>
 
 <div class="flex h-screen flex-col overflow-hidden">
